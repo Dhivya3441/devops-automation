@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools{
-        maven "Maven3.6.3"
+        maven 'Maven3.6.3'
     }
     stages{
         stage('Build Maven'){
@@ -21,10 +21,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u sample-file -p ${dockerhubpwd}'
+                   sh 'docker login -u dhivya26 -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push sample-file/devops-integration'
+                   sh 'docker push dhivya26/devops-integration'
                 }
             }
         }
