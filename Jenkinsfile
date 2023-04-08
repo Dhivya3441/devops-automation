@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools{
-        maven "M3"
+         mvnHome = tool 'Maven_Home'
     }
     stages{
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dhivya3441/devops-automation']]])
-                sh 'mvn clean install'
+                sh 'clean install'
             }
         }
         stage('Build docker image'){
